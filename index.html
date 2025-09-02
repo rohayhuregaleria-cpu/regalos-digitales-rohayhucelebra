@@ -4,340 +4,293 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Un Regalo Especial Para Ti</title>
-    <!-- ================================================== -->
-    <!-- NUEVO: Meta Tags para Vistas Previas y Favicon -->
-    <!-- ================================================== -->
-
-    <!-- Favicon estático para vistas previas y navegadores que no animan -->
-    <link rel="icon" href="favicon_normal.png" type="image/png">
-
-    <!-- Título para la vista previa del enlace -->
-    <meta property="og:title" content="Rohayhu Celebra! - Un Regalo Digital te Espera">
-
-    <!-- Descripción para la vista previa -->
-    <meta property="og:description" content="Estás por recibir una experiencia digital única y personalizada. ¡Haz clic para descubrir tu sorpresa!">
-
-    <!-- Imagen que aparecerá en la vista previa (¡LA MÁS IMPORTANTE!) -->
-    <meta property="og:image" content="https://i.imgur.com/dro71HT.png">
-
-    <!-- URL de tu sitio -->
-    <meta property="og:url" content="https://rohayhu-celebra-regalos.netlify.app/">
-
-    <!-- Para que se vea bien en Twitter también -->
+    
+    <!-- Meta Tags y Favicon -->
+    <meta property="og:title" content="Rohayhu Celebra!- Un Regalo Digital te Espera">
+    <meta property="og:description" content="Has recibido una experiencia digital única y personalizada. ¡Haz clic para descubrir tu sorpresa!">
+    <meta property="og:image" content="https://i.imgur.com/8Jj5erZ.png"> <!-- Reemplaza con tu imagen estática si la tienes -->
+    <meta property="og:url" content="https://rohayhu-celebra-regalos.netlify.app/"> <!-- Reemplaza con tu URL de Netlify -->
     <meta name="twitter:card" content="summary_large_image">
-
-    <!-- ================================================== -->
-
+    <link id="favicon" rel="icon" href="favicon_normal.png" type="image/png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
-    
-    <!-- NUEVO: Favicon Normal y Animado -->
-    <link id="favicon" rel="icon" href="favicon_normal.png" type="image/png">
-
     <style>
         :root {
+            /* Paleta Principal */
             --naranja-vitalidad: #F26200;
             --gris-profundo: #393d41;
-            --magenta: #CB3D79;
-            --turquesa: #09869b;
-            --verde-armonia: #59a068;
             --texto-blanco: #FFFFFF;
+            
+            /* NUEVA Paleta Festiva */
+            --fondo-turquesa: #71c2c8;
+            --acento-magenta: #B42665;
+            --acento-turquesa-oscuro: #158EA4;
+            --acento-rosa-oscuro: #9A435A;
+            --acento-verde: #6EA372;
+            --acento-naranja-tierra: #D6805F;
         }
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--gris-profundo );
-            color: var(--texto-blanco);
+            /* NUEVO: Fondo degradado festivo */
+            background: radial-gradient(circle, #8ad0d6, var(--fondo-turquesa ));
+            color: var(--gris-profundo); /* Cambiado a oscuro para contraste */
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
             padding: 20px;
             box-sizing: border-box;
-            overflow: hidden;
             position: relative;
         }
         #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
+            position: fixed; width: 100%; height: 100%;
+            top: 0; left: 0; z-index: 0;
         }
         .container {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 800px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
+            position: relative; z-index: 1;
+            width: 100%; max-width: 900px;
+            /* NUEVO: Efecto "Frosted Glass" */
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
             padding: 30px 40px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
         
         #reveal-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--gris-profundo);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #8ad0d6, var(--fondo-turquesa));
             z-index: 100;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: opacity 0.8s ease-out;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            cursor: pointer; transition: opacity 0.8s ease-out;
         }
-        #gift-box {
-            font-size: 100px;
-            animation: bounce 2s infinite;
-        }
+        #gift-box { font-size: 100px; animation: bounce 2s infinite; }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-30px); }
             60% { transform: translateY(-15px); }
         }
-        #reveal-screen h2 {
-            font-weight: 400;
-            margin-top: 20px;
-        }
-        #reveal-screen p {
-            color: var(--naranja-vitalidad);
-            font-weight: 700;
-            margin-top: 10px;
-        }
+        #reveal-screen h2 { font-weight: 400; margin-top: 20px; color: var(--gris-profundo); }
+        #reveal-screen p { color: var(--naranja-vitalidad); font-weight: 700; margin-top: 10px; }
 
-        .logo .rohayhu {
-            font-weight: 700;
-            font-size: 1em;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        .logo .celebra {
-            font-weight: 700;
-            font-style: italic;
-            font-size: 2.5em;
-            color: var(--naranja-vitalidad);
-            text-shadow: 0 0 15px var(--naranja-vitalidad);
-        }
-        .greeting {
-            font-size: 1.8em;
-            font-weight: 400;
-            margin: 20px 0;
-        }
+        .logo .rohayhu { font-weight: 700; font-size: 1em; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gris-profundo); }
+        .logo .celebra { font-weight: 700; font-style: italic; font-size: 2.5em; color: var(--naranja-vitalidad); text-shadow: 0 0 15px rgba(242, 98, 0, 0.5); }
+        .greeting { font-size: 1.8em; font-weight: 400; margin: 20px 0; }
         
-        #sound-indicator {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 50px;
-        }
-        #sound-indicator .icon {
-            font-size: 24px;
-            animation: sound-wave 1.5s infinite ease-in-out;
-        }
-        #sound-indicator .text {
-            font-weight: 700;
-            font-size: 1.1em;
-        }
-        @keyframes sound-wave {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
+        #sound-indicator { display: none; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.05); padding: 10px; border-radius: 50px; }
+        #sound-indicator .icon { font-size: 24px; animation: sound-wave 1.5s infinite ease-in-out; }
+        #sound-indicator .text { font-weight: 700; font-size: 1.1em; }
+        @keyframes sound-wave { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
-        .content-wrapper {
-            margin: 10px 0;
-            width: 100%;
-            background-color: #000;
-            border-radius: 10px;
-            overflow: hidden;
+        #kit-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px; margin-top: 30px;
         }
-        .content-wrapper.video-pdf {
-             aspect-ratio: 16 / 9;
-        }
-        .content-wrapper video,
-        .content-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .content-wrapper audio {
-            width: 100%;
-            margin-top: 10px;
-        }
-        
-        .sender-message {
-            margin-top: 20px;
-            font-style: italic;
-            opacity: 0.8;
-        }
-        .download-button {
-            display: inline-block;
-            background-color: var(--naranja-vitalidad);
-            color: var(--gris-profundo);
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 30px;
+        .kit-card {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px; padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .download-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(242, 98, 0, 0.3);
+        .kit-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .kit-card .icon { font-size: 40px; margin-bottom: 10px; }
+        .kit-card h3 { font-size: 1.2em; margin: 10px 0; font-weight: 700; }
+        .kit-card .actions { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .kit-card .btn { display: block; padding: 10px 15px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: background-color 0.2s ease; }
+        .kit-card .btn.primary { background-color: var(--naranja-vitalidad); color: var(--texto-blanco); }
+        .kit-card .btn.secondary { background-color: transparent; color: var(--gris-profundo); border: 1px solid var(--gris-profundo); }
+        
+        #modal-viewer {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8); z-index: 200;
+            display: none; justify-content: center; align-items: center;
+            padding: 20px; box-sizing: border-box;
         }
-        .footer {
-            margin-top: 40px;
-            font-size: 0.8em;
-            opacity: 0.6;
-            font-weight: 400;
-        }
+        #modal-content { position: relative; width: 100%; max-width: 1100px; height: 90%; background-color: #fff; border-radius: 10px; display: flex; flex-direction: column; }
+        #modal-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #f1f1f1; color: var(--gris-profundo); border-bottom: 1px solid #ddd; }
+        #modal-title { font-size: 1.2em; font-weight: 700; }
+        #modal-close { font-size: 24px; cursor: pointer; color: var(--gris-profundo); background: none; border: none; }
+        #modal-body { flex-grow: 1; background-color: #000; }
+        #modal-body iframe, #modal-body video, #modal-body audio { width: 100%; height: 100%; border: none; }
+        #modal-body audio { height: 80px; }
+
+        #simple-content-wrapper { margin: 30px 0; width: 100%; background-color: #000; border-radius: 10px; overflow: hidden; }
+        #simple-content-wrapper.video-pdf { aspect-ratio: 16 / 9; }
+        #simple-content-wrapper video, #simple-content-wrapper iframe, #simple-content-wrapper audio { width: 100%; height: 100%; border: none; }
+        
+        .sender-message { margin-top: 20px; font-style: italic; opacity: 0.8; }
+        .footer { margin-top: 40px; font-size: 0.8em; opacity: 0.6; font-weight: 400; }
     </style>
 </head>
 <body>
-
     <div id="reveal-screen">
         <div id="gift-box">🎁</div>
         <h2>Digital. Único. Tuyo.</h2>
         <p>Haz clic para abrir tu regalo</p>
     </div>
-
     <div id="particles-js"></div>
-
     <div class="container">
         <div class="logo">
             <div class="rohayhu">ROHAYHU</div>
             <div class="celebra">Celebra!</div>
         </div>
         <h1 id="greeting" class="greeting"></h1>
-        
+        <p id="sender-message" class="sender-message"></p>
         <div id="sound-indicator">
             <div class="icon">🔊</div>
             <div class="text">¡Sube el volumen!</div>
         </div>
-
-        <div id="content-wrapper" class="content-wrapper"></div>
-
-        <p id="sender-message" class="sender-message"></p>
-
-        <a id="download-button" class="download-button" href="#" download>
-            Descargar mi Regalo
-        </a>
-
-        <div class="footer">
-            Powered by NEURACOR
+        <div id="simple-content-wrapper"></div>
+        <a id="simple-download-button" class="kit-card btn primary" style="display:none; max-width: 250px; margin: 20px auto;" href="#" download>Descargar mi Regalo</a>
+        <div id="kit-gallery"></div>
+        <div class="footer">Powered by NEURACOR</div>
+    </div>
+    <div id="modal-viewer">
+        <div id="modal-content">
+            <div id="modal-header">
+                <h2 id="modal-title"></h2>
+                <button id="modal-close">&times;</button>
+            </div>
+            <div id="modal-body"></div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
     <script>
         // --- Favicon Animation ---
-        const favicons = [
-            'favicon_normal.png',
-            'favicon_latido.png'
-        ];
+        const favicons = ['favicon_normal.png', 'favicon_latido.png'];
         let currentFaviconFrame = 0;
         const faviconElement = document.getElementById('favicon' );
-
-        function animateFavicon() {
+        setInterval(() => {
             faviconElement.href = favicons[currentFaviconFrame];
             currentFaviconFrame = (currentFaviconFrame + 1) % favicons.length;
-        }
-        // Animate every 500ms (0.5 seconds)
-        setInterval(animateFavicon, 500);
+        }, 500);
 
-
-        // --- Particles.js Configuration ---
+        // --- NUEVO: Particles.js con Paleta Festiva ---
         particlesJS("particles-js", {
-            "particles": { "number": { "value": 40 }, "color": { "value": ["#F26200", "#CB3D79", "#09869b", "#59a068"] }, "shape": { "type": "circle" }, "opacity": { "value": 0.6, "random": true }, "size": { "value": 4, "random": true }, "move": { "enable": true, "speed": 1, "direction": "none", "straight": false } },
-            "interactivity": { "events": { "onhover": { "enable": true, "mode": "repulse" } } }
+            particles: {
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: ["#B42665", "#158EA4", "#9A435A", "#6EA372", "#D6805F", "#F26200"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.8, random: true },
+                size: { value: 5, random: true },
+                move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+            },
+            interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "bubble" }, onclick: { enable: true, mode: "push" } }, modes: { bubble: { distance: 200, size: 8, duration: 2, opacity: 1 }, push: { particles_nb: 4 } } }
         });
 
-        // --- Reveal Screen and Content Loading Logic ---
+        // --- El resto del JavaScript no necesita cambios ---
         document.addEventListener('DOMContentLoaded', () => {
             const revealScreen = document.getElementById('reveal-screen');
             const container = document.querySelector('.container');
-            
             container.style.display = 'none';
-
             revealScreen.addEventListener('click', () => {
                 revealScreen.style.opacity = '0';
                 setTimeout(() => {
                     revealScreen.style.display = 'none';
                     container.style.display = 'block';
-                    loadPersonalizedContent();
+                    loadContent();
                 }, 800);
             });
-
-            function loadPersonalizedContent() {
+            function loadContent() {
                 const params = new URLSearchParams(window.location.search);
+                const isKit = params.get('kit') === 'true';
                 const nombre = params.get('nombre');
+                const remitente = params.get('remitente');
+                document.getElementById('greeting').textContent = nombre ? `Un regalo para ${nombre}` : '¡Tienes una sorpresa!';
+                document.title = nombre ? `Un Regalo para ${nombre}` : 'Un Regalo Especial';
+                if (remitente) document.getElementById('sender-message').textContent = `De parte de ${remitente}.`;
+                if (isKit) { loadKitContent(params); } else { loadSimpleContent(params); }
+            }
+            function loadSimpleContent(params) {
                 const tipo = params.get('tipo');
                 const url = params.get('url');
-                const remitente = params.get('remitente');
-
-                const greetingEl = document.getElementById('greeting');
-                const contentWrapperEl = document.getElementById('content-wrapper');
-                const downloadButtonEl = document.getElementById('download-button');
-                const senderMessageEl = document.getElementById('sender-message');
-                const soundIndicatorEl = document.getElementById('sound-indicator');
-
-                if (nombre) {
-                    greetingEl.textContent = `Un regalo para ${nombre}`;
-                    document.title = `Un Regalo para ${nombre} de Rohayhu Celebra!`;
-                } else {
-                    greetingEl.textContent = '¡Tienes una sorpresa!';
-                }
-
-                if (remitente) {
-                    senderMessageEl.textContent = `De parte de ${remitente}.`;
-                }
-
-                const finalUrl = (tipo === 'audio' && !url) ? 'https://storage.googleapis.com/manus-demos/storytelling-demo.mp3' : url;
-
-                if (finalUrl ) {
+                const contentWrapperEl = document.getElementById('simple-content-wrapper');
+                const downloadButtonEl = document.getElementById('simple-download-button');
+                if (url) {
                     let contentHtml = '';
-                    contentWrapperEl.className = 'content-wrapper';
-
-                    if (tipo === 'video') {
-                        contentWrapperEl.classList.add('video-pdf');
-                        contentHtml = `<video src="${finalUrl}" controls autoplay muted loop playsinline></video>`;
-                        soundIndicatorEl.style.display = 'none'; // Asegurarse de que no se muestre para video
-                    } else if (tipo === 'audio') {
-                        soundIndicatorEl.style.display = 'flex';
-                        contentHtml = `<audio src="${finalUrl}" controls autoplay></audio>`;
-                    } else if (tipo === 'pdf') {
-                        contentWrapperEl.classList.add('video-pdf');
-                        contentHtml = `<iframe src="${finalUrl}"></iframe>`;
-                        soundIndicatorEl.style.display = 'none'; // Asegurarse de que no se muestre para PDF
-                    } else {
-                        contentHtml = '<p>El contenido de tu regalo aparecerá aquí.</p>';
-                        soundIndicatorEl.style.display = 'none';
+                    contentWrapperEl.className = 'simple-content-wrapper';
+                    if (tipo === 'video' || tipo === 'pdf') contentWrapperEl.classList.add('video-pdf');
+                    if (tipo === 'audio') document.getElementById('sound-indicator').style.display = 'flex';
+                    switch (tipo) {
+                        case 'video': contentHtml = `<video src="${url}" controls autoplay muted loop playsinline></video>`; break;
+                        case 'audio': contentHtml = `<audio src="${url}" controls autoplay></audio>`; break;
+                        case 'pdf': contentHtml = `<iframe src="${url}"></iframe>`; break;
+                        case 'link': contentHtml = `<div style="padding: 40px;"><h2>Enlace Especial</h2><a href="${url}" target="_blank" class="kit-card btn primary">Abrir Enlace</a></div>`; break;
+                        default: contentHtml = '<p>Contenido no encontrado.</p>';
                     }
                     contentWrapperEl.innerHTML = contentHtml;
-                    downloadButtonEl.href = finalUrl;
-                } else {
-                    contentWrapperEl.innerHTML = '<p style="padding-top: 20px;">Contenido no encontrado.</p>';
-                    downloadButtonEl.style.display = 'none';
-                    soundIndicatorEl.style.display = 'none';
+                    if (tipo !== 'link') {
+                        downloadButtonEl.href = url;
+                        downloadButtonEl.style.display = 'inline-block';
+                    }
                 }
             }
+            function loadKitContent(params) {
+                const gallery = document.getElementById('kit-gallery');
+                gallery.style.display = 'grid';
+                let i = 1;
+                while (params.has(`tipo${i}`)) {
+                    const tipo = params.get(`tipo${i}`);
+                    const url = params.get(`url${i}`);
+                    const titulo = params.get(`titulo${i}`) || `Regalo #${i}`;
+                    const card = document.createElement('div');
+                    card.className = 'kit-card';
+                    let icon = '🎁';
+                    if (tipo === 'video') icon = '▶️';
+                    if (tipo === 'audio') icon = '🎵';
+                    if (tipo === 'pdf') icon = '📄';
+                    if (tipo === 'link') icon = '🔗';
+                    card.innerHTML = `
+                        <div class="icon">${icon}</div>
+                        <h3>${titulo}</h3>
+                        <div class="actions">
+                            <button class="btn primary" data-tipo="${tipo}" data-url="${url}" data-titulo="${titulo}">Ver / Escuchar</button>
+                            ${tipo !== 'link' ? `<a href="${url}" class="btn secondary" download>Descargar</a>` : ''}
+                        </div>
+                    `;
+                    gallery.appendChild(card);
+                    i++;
+                }
+                gallery.addEventListener('click', function(e) {
+                    if (e.target && e.target.classList.contains('primary')) {
+                        const { tipo, url, titulo } = e.target.dataset;
+                        openModal(tipo, url, titulo);
+                    }
+                });
+            }
+            const modal = document.getElementById('modal-viewer');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const closeModalBtn = document.getElementById('modal-close');
+            function openModal(tipo, url, titulo) {
+                modalTitle.textContent = titulo;
+                let contentHtml = '';
+                if (tipo === 'audio') document.getElementById('sound-indicator').style.display = 'flex';
+                switch (tipo) {
+                    case 'video': contentHtml = `<video src="${url}" controls autoplay muted loop playsinline></video>`; break;
+                    case 'audio': contentHtml = `<audio src="${url}" controls autoplay></audio>`; break;
+                    case 'pdf': contentHtml = `<iframe src="${url}"></iframe>`; break;
+                    case 'link': window.open(url, '_blank'); return;
+                }
+                modalBody.innerHTML = contentHtml;
+                modal.style.display = 'flex';
+            }
+            function closeModal() {
+                modal.style.display = 'none';
+                modalBody.innerHTML = '';
+                document.getElementById('sound-indicator').style.display = 'none';
+            }
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
         });
     </script>
-
 </body>
 </html>
-
-
