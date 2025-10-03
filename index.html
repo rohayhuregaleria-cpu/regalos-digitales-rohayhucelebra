@@ -267,15 +267,25 @@
                     if (tipo === 'video' || tipo === 'pdf') contentWrapperEl.classList.add('video-pdf');
                     if (tipo === 'audio') document.getElementById('sound-indicator').style.display = 'flex';
                     switch (tipo) {
-                        case 'video': contentHtml = `<video src="${url}" controls autoplay muted loop playsinline></video>`; break;
-                        case 'audio': contentHtml = `<audio src="${url}" controls autoplay></audio>`; break;
+                        case 'video': contentHtml = `<iframe src="${url}" allowfullscreen></iframe>`; break;
+                        case 'audio': contentHtml = `<iframe src="${url}"></iframe>`; break;
                         case 'pdf': contentHtml = `<iframe src="${url}"></iframe>`; break;
                         case 'link': window.open(url, '_blank'); return;
                         default: contentHtml = '<p>El contenido de tu regalo aparecerá aquí.</p>';
                     }
                     contentWrapperEl.innerHTML = contentHtml;
-                    downloadButtonEl.href = url;
-                    downloadButtonEl.style.display = 'block';
+                    // Para el botón de descarga, extraer el ID y usar formato de descarga
+                    if (url.includes('drive.google.com/file/d/')) {
+                        const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+                        if (match) {
+                            const driveId = match[1];
+                            downloadButtonEl.href = `https://drive.google.com/uc?export=download&id=${driveId}`;
+                            downloadButtonEl.style.display = 'block';
+                        }
+                    } else {
+                        downloadButtonEl.href = url;
+                        downloadButtonEl.style.display = 'block';
+                    }
                 } else {
                     contentWrapperEl.innerHTML = '<p style="padding-top: 20px;">Contenido no encontrado.</p>';
                     downloadButtonEl.style.display = 'none';
@@ -296,6 +306,17 @@
                 kitGalleryEl.innerHTML = items.map(item => {
                     const iconos = { video: '🎬', audio: '🎵', pdf: '📄', link: '🔗' };
                     const nombres = { video: 'Video', audio: 'Audio', pdf: 'Documento', link: 'Enlace' };
+                    
+                    // Para el botón de descarga, extraer el ID si es de Google Drive
+                    let downloadUrl = item.url;
+                    if (item.url.includes('drive.google.com/file/d/')) {
+                        const match = item.url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+                        if (match) {
+                            const driveId = match[1];
+                            downloadUrl = `https://drive.google.com/uc?export=download&id=${driveId}`;
+                        }
+                    }
+                    
                     return `
                         <div class="kit-card">
                             <div class="icon">${iconos[item.tipo] || '📦'}</div>
@@ -303,7 +324,7 @@
                             <p>${nombres[item.tipo] || 'Contenido'}</p>
                             <div class="actions">
                                 <a href="#" class="btn primary" onclick="openModal('${item.tipo}', '${item.url}', 'Regalo #${item.numero}')">Ver / Escuchar</a>
-                                <a href="${item.url}" class="btn secondary" download>Descargar</a>
+                                <a href="${downloadUrl}" class="btn secondary" download>Descargar</a>
                             </div>
                         </div>
                     `;
@@ -317,8 +338,8 @@
                 if (tipo === 'link') { window.open(url, '_blank'); return; }
                 let contentHtml = '';
                 switch (tipo) {
-                    case 'video': contentHtml = `<video src="${url}" controls autoplay muted loop playsinline></video>`; break;
-                    case 'audio': contentHtml = `<audio src="${url}" controls autoplay></audio>`; break;
+                    case 'video': contentHtml = `<iframe src="${url}" allowfullscreen></iframe>`; break;
+                    case 'audio': contentHtml = `<iframe src="${url}"></iframe>`; break;
                     case 'pdf': contentHtml = `<iframe src="${url}"></iframe>`; break;
                     default: contentHtml = '<p>Contenido no disponible.</p>';
                 }
